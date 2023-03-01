@@ -17,7 +17,6 @@ void Player::initShape()
 {
     this->shape.setFillColor(sf::Color::Green);
     this->shape.setSize(sf::Vector2f(50.f, 50.f));
-    this->shape.setOrigin(this->shape.getSize().x / 2.f, this->shape.getSize().y / 2.f);
 }
 
 /**
@@ -66,14 +65,30 @@ void Player::updateInput()
     {
         this->shape.move(0.f, this->movementSpeed);
     }
+}
 
-    // Rotation
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+void Player::updateWindowBoundsCollision(const sf::RenderTarget *target)
+{
+    sf::FloatRect playerBounds = this->shape.getGlobalBounds();
+
+    // Left and Right bounds collision
+    if (playerBounds.left <= 0.f)
     {
-        this->shape.rotate(-this->movementSpeed);
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+        this->shape.setPosition(0.f, this->shape.getPosition().y);
+    } 
+    else if (playerBounds.left + playerBounds.width >= target->getSize().x)
     {
-        this->shape.rotate(this->movementSpeed);
+        this->shape.setPosition(target->getSize().x - playerBounds.width, this->shape.getPosition().y);
+    }
+
+    // Top andBottom bounds collision
+    if (playerBounds.top <= 0.f)
+    {
+        this->shape.setPosition(this->shape.getPosition().x, 0.f);
+    }
+    else if (playerBounds.top + playerBounds.height >= target->getSize().y)
+    {
+        this->shape.setPosition(this->shape.getPosition().x, target->getSize().y - playerBounds.height);
     }
 }
 
@@ -81,11 +96,13 @@ void Player::updateInput()
  * @brief Updates the player
  * 
  */
-void Player::update()
+void Player::update(const sf::RenderTarget* target)
 {
-    // Window bounds collision
-
     this->updateInput();
+    
+    // Window bounds collision
+    this->updateWindowBoundsCollision(target);
+
 }
 
 /**
