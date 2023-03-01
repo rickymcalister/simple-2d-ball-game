@@ -56,7 +56,8 @@ void Game::render()
 {
     this->window->clear();
 
-    // Render items
+    // Render game objects
+    this->player.render(this->window);
 
     this->window->display();
 }

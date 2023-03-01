@@ -4,4 +4,12 @@ See Tutorial [C++ & SFML - Simple 2D Games - Game 2](https://www.youtube.com/wat
 
 ## Build
 
-TBC
+```
+make
+```
+
+## Run
+
+```
+./ballgameapp
+```
