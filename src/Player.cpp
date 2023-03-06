@@ -7,6 +7,8 @@
 void Player::initVariables()
 {
     this->movementSpeed = 5.f;
+    this->hpMax = 10;
+    this->hp = this->hpMax;
 }
 
 /**
@@ -40,6 +42,16 @@ Player::Player(float posX, float posY)
 Player::~Player()
 {
 
+}
+
+/**
+ * @brief Returns the shape of the player
+ * 
+ * @return const sf::RectangleShape& 
+ */
+const sf::RectangleShape &Player::getShape() const
+{
+    return this->shape;
 }
 
 /**

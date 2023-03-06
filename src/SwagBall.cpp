@@ -37,6 +37,16 @@ SwagBall::~SwagBall()
 
 }
 
+/**
+ * @brief Returns the shape of the swag ball
+ * 
+ * @return const sf::CircleShape& 
+ */
+const sf::CircleShape &SwagBall::getShape() const
+{
+    return this->shape;
+}
+
 void SwagBall::update()
 {
 
