@@ -13,3 +13,7 @@ make
 ```
 ./ballgameapp
 ```
+
+## Continue from ...
+
+[https://youtu.be/H6E1cwkTZIw?t=196](https://youtu.be/H6E1cwkTZIw?t=196)

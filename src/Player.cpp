@@ -67,6 +67,11 @@ void Player::updateInput()
     }
 }
 
+/**
+ * @brief Updates the player window bounds collision
+ * 
+ * @param target 
+ */
 void Player::updateWindowBoundsCollision(const sf::RenderTarget *target)
 {
     sf::FloatRect playerBounds = this->shape.getGlobalBounds();
@@ -99,7 +104,7 @@ void Player::updateWindowBoundsCollision(const sf::RenderTarget *target)
 void Player::update(const sf::RenderTarget* target)
 {
     this->updateInput();
-    
+
     // Window bounds collision
     this->updateWindowBoundsCollision(target);
 
